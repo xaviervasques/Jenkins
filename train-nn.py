@@ -12,7 +12,7 @@ import numpy as np
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.neural_network import MLPClassifier
 import pandas as pd
-from joblib import dump
+from joblib import dump, load
 from sklearn import preprocessing
 
 def train():
