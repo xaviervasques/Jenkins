@@ -2,10 +2,10 @@
 # tain.py
 # Xavier Vasques 13/04/2021
 
-import platform; print(platform.platform())
-import sys; print("Python", sys.version)
-import numpy; print("NumPy", numpy.__version__)
-import scipy; print("SciPy", scipy.__version__)
+import platform
+import sys
+import numpy
+import scipy
 
 import os
 import numpy as np
@@ -32,9 +32,9 @@ def train():
     y_train = data_train['# Letter'].values
     X_train = data_train.drop(data_train.loc[:, 'Line':'# Letter'].columns, axis = 1)
 
-    print("Shape of the training data")
-    print(X_train.shape)
-    print(y_train.shape)
+    #print("Shape of the training data")
+    #print(X_train.shape)
+   # print(y_train.shape)
 
     # Data normalization (0,1)
     X_train = preprocessing.normalize(X_train, norm='l2')
@@ -56,23 +56,23 @@ def train():
     y_test = data_test['# Letter'].values
     X_test = data_test.drop(data_test.loc[:, 'Line':'# Letter'].columns, axis = 1)
 
-    print("Shape of the test data")
-    print(X_test.shape)
-    print(y_test.shape)
+  #  print("Shape of the test data")
+  # print(X_test.shape)
+  #  print(y_test.shape)
 
     # Data normalization (0,1)
     X_test = preprocessing.normalize(X_test, norm='l2')
 
     # load and Run model
-    print(MODEL_PATH_LDA)
+    #print(MODEL_PATH_LDA)
     clf_lda = load(MODEL_PATH_LDA)
     print("LDA score and classification:")
-    print(clf_lda.score(X_test, y_test))
-    print(clf_lda.predict(X_test))
+    print(int(clf_lda.score(X_test, y_test)))
+#    print(clf_lda.predict(X_test))
     
     # Print in a created accuracy.txt file the accuaracy score of our model
-    with open('accuracy.txt','w') as f:
-        print(int(clf_lda.score(X_test, y_test)))
+#    with open('accuracy.txt','w') as f:
+#        print(int(clf_lda.score(X_test, y_test)))
 
 if __name__ == '__main__':
     train()
