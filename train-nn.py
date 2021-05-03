@@ -73,7 +73,7 @@ def train():
     # Load and Run model
     clf_nn = load(MODEL_PATH_NN)
     print("NN score and classification:")
-    print(int(clf_nn.score(X_test, y_test)))
+    print((clf_nn.score(X_test, y_test)))
     #print(clf_nn.predict(X_test))
     
     # Print in a created accuracy.txt file the accuaracy score of our model
