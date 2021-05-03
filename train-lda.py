@@ -10,7 +10,7 @@ import scipy; print("SciPy", scipy.__version__)
 import os
 import numpy as np
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.neural_network import MLPClassifier
+#from sklearn.neural_network import MLPClassifier
 import pandas as pd
 from joblib import dump, load
 from sklearn import preprocessing
@@ -21,9 +21,9 @@ def train():
 
     MODEL_DIR = os.environ["MODEL_DIR"]
     MODEL_FILE_LDA = os.environ["MODEL_FILE_LDA"]
-    MODEL_FILE_NN = os.environ["MODEL_FILE_NN"]
+#    MODEL_FILE_NN = os.environ["MODEL_FILE_NN"]
     MODEL_PATH_LDA = os.path.join(MODEL_DIR, MODEL_FILE_LDA)
-    MODEL_PATH_NN = os.path.join(MODEL_DIR, MODEL_FILE_NN)
+#    MODEL_PATH_NN = os.path.join(MODEL_DIR, MODEL_FILE_NN)
 
     # Load, read and normalize training data
     training = "./train.csv"
@@ -69,6 +69,10 @@ def train():
     print("LDA score and classification:")
     print(clf_lda.score(X_test, y_test))
     print(clf_lda.predict(X_test))
+    
+    # Print in a created accuracy.txt file the accuaracy score of our model
+    with open('accuracy.txt','w') as f:
+        print(int(clf_lda.score(X_test, y_test)))
 
 if __name__ == '__main__':
     train()
