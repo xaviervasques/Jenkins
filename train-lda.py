@@ -77,11 +77,11 @@ def train():
     # Print in a created accuracy.txt file the accuaracy score of our model
     #filename = MODEL_DIR+'accuracy.txt'
     #with open('accuracy.txt','w') as f:
-    #    print('%.3f' % (clf_lda.score(X_test, y_test)))
+    print('%.3f' % (clf_lda.score(X_test, y_test)))
    
-    filename = MODEL_DIR+'result.txt'
-    file = open(filename,'w')
-    file.write(str(clf_lda.score(X_test, y_test)))
+    #filename = MODEL_DIR+'result.txt'
+    #file = open(filename,'w')
+    #file.write(str(clf_lda.score(X_test, y_test)))
 
 
 if __name__ == '__main__':
