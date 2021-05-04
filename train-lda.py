@@ -75,7 +75,8 @@ def train():
     #print(clf_lda.predict(X_test))
     
     # Print in a created accuracy.txt file the accuaracy score of our model
-    with open('accuracy_.txt','w') as f:
+    filename = MODEL_DIR+'accuracy.txt'
+    with open(filename,'w') as f:
         print('%.3f' % (clf_lda.score(X_test, y_test)))
 
 if __name__ == '__main__':
