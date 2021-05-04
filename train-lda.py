@@ -78,8 +78,9 @@ def train():
     #filename = MODEL_DIR+'accuracy.txt'
     #with open('accuracy.txt','w') as f:
     #    print('%.3f' % (clf_lda.score(X_test, y_test)))
-    
-    file = open('result.txt','w')
+   
+    filename = MODEL_DIR+'result.txt'
+    file = open(filename,'w')
     file.write(str(clf_lda.score(X_test, y_test)))
 
 
