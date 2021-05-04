@@ -67,10 +67,12 @@ def train():
     #print(MODEL_PATH_LDA)
     clf_lda = load(MODEL_PATH_LDA)
     print("LDA score and classification:")
+    print('Accuracy = %.3f' % (clf_lda.score(X_test, y_test)))
     #print((clf_lda.score(X_test, y_test)))
-    accuracy = clf_lda.score(X_test, y_test)
-    print('%i'%accuracy)
-#    print(clf_lda.predict(X_test))
+    #accuracy = clf_lda.score(X_test, y_test)[0]
+    #accuracy = int(np.accuracy)
+    #print('%i'%accuracy)
+    #print(clf_lda.predict(X_test))
     
     # Print in a created accuracy.txt file the accuaracy score of our model
 #    with open('accuracy.txt','w') as f:
