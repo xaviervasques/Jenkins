@@ -10,7 +10,6 @@ RUN pip install -r requirements.txt
 
 COPY train.csv ./train.csv
 COPY test.csv ./test.csv
-COPY result.txt ./result.txt
 
 COPY train-lda.py ./train-lda.py
 COPY train-nn.py ./train-nn.py
