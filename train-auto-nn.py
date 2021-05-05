@@ -12,6 +12,7 @@ from sklearn.neural_network import MLPClassifier
 import pandas as pd
 from joblib import dump, load
 from sklearn import preprocessing
+from sklearn.model_selection import GridSearchCV
 
 def train():
 
@@ -33,14 +34,6 @@ def train():
 
     # Models training
 
-    # Neural Networks multi-layer perceptron (MLP) algorithm
-    clf_NN = MLPClassifier(solver='adam', activation='relu', alpha=0.0001, hidden_layer_sizes=(500,), random_state=0, max_iter=1000)
-    clf_NN.fit(X_train, y_train)
-
-    # Serialize model
-    from joblib import dump, load
-    dump(clf_NN, MODEL_PATH_NN)
-
     # Load, read and normalize training data
     testing = "test.csv"
     data_test = pd.read_csv(testing)
@@ -51,10 +44,24 @@ def train():
     # Data normalization (0,1)
     X_test = preprocessing.normalize(X_test, norm='l2')
 
-    # Load and Run model
-    clf_nn = load(MODEL_PATH_NN)
-    
-    print(int(clf_nn.score(X_test, y_test)*100))
+    # Neural Networks multi-layer perceptron (MLP) algorithm that trains using Backpropagation
+    param_grid = [
+     {
+         'activation' : ['identity', 'logistic', 'tanh', 'relu'],
+#         'solver' : ['lbfgs', 'sgd', 'adam'],
+#         'hidden_layer_sizes': [(300,),(500,)],
+#         'max_iter': [1000],
+#         'alpha': [1e-5, 0.001, 0.01, 0.1, 1, 10],
+#         'random_state':[0]
+     }
+    ]
+
+    clf_neuralnet = GridSearchCV(MLPClassifier(), param_grid,scoring='accuracy')
+    clf_neuralnet.fit(X_train, y_train)
+    print("The Neural Net (few parameters) best prediction is ...")
+    print(clf_neuralnet.score(X_test, y_test))
+    print("Best parameters set found on development set:")
+    print(clf_neuralnet.best_params_)
 
 if __name__ == '__main__':
     train()
